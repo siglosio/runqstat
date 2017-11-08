@@ -1,23 +1,25 @@
 # runqstat
 Linux Run Queue Utility
 
-runqstat is a Linux command-line tool written iin Go for collecting stats about the CPU, especially the run queue
+runqstat is a Linux command-line tool written in Go for collecting stats about the CPU, especially the run queue
 
 ## ALPHA RELEASE 
-Not all features fully implemented nor code fully cleaned up.
+Still in testing and features and/or output may change.
+In addition, the code is not fully cleaned up.
 
 Usage:
 
-runqstat —-interval —-duration —-blocked —-queue —-method --help 
+runqstat [-d duration] [-i interval] [-c count] [-q] [-b] [-v] [-h]
 
--i - Interval - Sample interval in milliseconds, default 10ms
--d - Duration - How long to run for, default 1 second
--m - Method - Default is Average, can also do wma Weighted Moving Average. Weights are fixed.
--b - Blocked - Show second line with blocked count
--q - Queue Only - Show ‘run queue’ - 'core count’ to get real queue, as default is to show the running & queued.
--v - Verbose - Show additional info for testing and internals
--h - Help - Usage help
+  The options are as follows:
 
+       -d      Duration of the sampling run. Default is 1 second.
+       -i      Interval of the sample time. Default is 25 milliseconds.
+       -c      Count of overall runs. Default is 1 run.
+       -q      Get queue only, which will subtract the number of CPU cores. Default is off.
+       -b      Include blocked count, from /proc/stats. Default is off.
+       -v      Verbose, for debugging and more info. Default is off.
+       -h      Help and usage.
 
 ## Contributing
 We are not ready for contributors until we can get the code cleaned up and standardized or Go best practices.
