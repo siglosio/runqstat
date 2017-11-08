@@ -1,9 +1,9 @@
 # runqstat
 Linux Run Queue Utility
 
-runqstat is a Linux command-line tool written in Go for collecting stats about the CPU, especially the run queue
+runqstat is a Linux command-line tool written in Go for collecting stats about the CPU, especially the run queue - this essentially gives you the load average without any blocking disk I/O. Note this is an approximation since the kernel does not provide this info directly, so we have to sample the run queue often (every 10ms) and average over 1 or more seconds.
 
-## ALPHA RELEASE 
+## BETA RELEASE 
 Still in testing and features and/or output may change.
 In addition, the code is not fully cleaned up.
 
@@ -22,10 +22,10 @@ runqstat [-d duration] [-i interval] [-c count] [-q] [-b] [-v] [-h]
        -h      Help and usage.
 
 ## Contributing
-We are not ready for contributors until we can get the code cleaned up and standardized or Go best practices.
+We are not ready for contributors until we can get the code cleaned up and standardized for Go best practices.
 
 However, you can contribute by:
-- Fix and [report bugs](https://github.com/opsstack/runqstat/issues/new)
+- [Report bugs](https://github.com/opsstack/runqstat/issues/new)
 - [Improve documentation](https://github.com/opsstack/runqstat/issues?q=is%3Aopen+label%3Adocumentation)
 - [Review code and feature proposals](https://github.com/opsstack/runqstat/pulls)
 
