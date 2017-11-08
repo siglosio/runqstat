@@ -1,0 +1,52 @@
+." Man page for runqstat
+
+.TH runqstat 1 "08 Nov 2017" "0.1" "runqstat man page"
+
+.SH NAME
+runqstat \- monitor Linux CPU runq
+
+.SH SYNOPSIS
+runqstat [-d duration] [-i interval] [-c count] [-q] [-b] [-v] [-h]
+
+.SH DESCRIPTION
+runqstat is a tool to calculate the actual Linux runq over a time interval. This is similar to the load average on non-Linux Unix systems, which do not include blocked processes (usually IO).
+
+runqstat samples /proc/stat to get the processing running - it does this very fast, once every interval, for the duration
+
+Note column headings are only displayed if count > 1, which simplies parsing for tools that just need a single number.
+
+The options are as follows:
+
+     -d      Duration of the sampling run Default is 1 second.
+     -i      Interval of the sample time. Default is 25 milliseconds.
+     -c      Count of overall runs. Default is 1 run.
+     -q      Get queue only, which will subtract the number of CPU cores. Default is off.
+     -b      Include blocked count, from /proc/stats. Default is off.
+     -v      Verbose, for debugging and more info. Default is off.
+     -h      Help and usage.
+
+.SH EXAMPLES
+
+runqstat
+          Display the runq after 1 second of averaging 10ms samples
+
+runqstat -d 10 -i 100
+         Display the runq after 10 seconds of averaging 100ms samples
+
+runqstat -d 2 -c 10
+         Display the runq 10 times, averaging 2 seconds each time
+
+runqstat -c 10 -b -q
+         Display the runq, queue only (subtract cpu count), and blocking, both 10 times
+
+.SH SEE ALSO
+vmstat(8), sar(1)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Steve Mushero (steve.mushero@opsstack.io)
+
+.SH COPYRIGHT
+Copyright © 2017 OpsStack License GPLv2 - <http://gnu.org/licenses/gpl.html>
